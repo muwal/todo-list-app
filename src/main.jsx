@@ -10,6 +10,7 @@ import {
     createBrowserRouter,
     Route,
     RouterProvider,
+    HashRouter
 } from "react-router-dom";
 import Detail from './pages/Detail.jsx'
 
@@ -37,7 +38,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <HashRouter>
+            <Layout>
+                <App></App>
+            </Layout>
+        </HashRouter>
     </React.StrictMode>
 
 )
