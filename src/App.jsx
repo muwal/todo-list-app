@@ -29,19 +29,11 @@ function App() {
 	const $removeActivityModal = document.getElementById('removeActivityModal');
 	const removeActivityModal = new Modal($removeActivityModal, {
 		closable: true,
-		backdropClasses: 'modal-backdrop',
-		onHide: () => {
-			removeBackdrop()
-		},
 	});
 
 	const $removeActivitySuccessModal = document.getElementById('removeActivitySuccessModal');
 	const removeActivitySuccessModal = new Modal($removeActivitySuccessModal, {
 		closable: true,
-		backdropClasses: 'modal-backdrop',
-		onHide: () => {
-			removeBackdrop()
-		},
 	});
 
 	const [activities, setActivities] = useState(null);
@@ -175,7 +167,7 @@ function App() {
 				</div>
 			</section>
 
-			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" className="fixed bg-gray-700 bg-opacity-50 top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%)] max-h-full mx-auto">
 				<div className="relative w-full max-w-2xl max-h-full" data-cy="modal-delete">
 					<div className="relative bg-white rounded-2xl shadow py-6">
 						<div className="p-6 text-center">
@@ -200,7 +192,7 @@ function App() {
 				</div>
 			</div>
 
-			<div id="removeActivitySuccessModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+			<div id="removeActivitySuccessModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 bg-gray-700 bg-opacity-50 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%)] max-h-full mx-auto">
 				<div className="relative w-full max-w-2xl max-h-full" data-cy="modal-information">
 					<div className="relative bg-white rounded-2xl shadow py-6">
 						<div className="flex items-center px-6">
