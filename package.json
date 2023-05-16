@@ -6,7 +6,7 @@
   "homepage": "https://legendary-crumble-ec9eb0.netlify.app/",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=./",
+    "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
