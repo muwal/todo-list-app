@@ -211,10 +211,10 @@ export default function Detail() {
             setTextValue('')
             setDataArray({})
             getAllTodos()
-            setMessage('Todo berhasil ditambahkan');
+            // setMessage('Todo berhasil ditambahkan');
             setClassDropdownPriority('hidden');
             addTodoModal.hide()
-            successModal.show()
+            // successModal.show()
         }).catch(error => {
             setIsSaving(false)
             console.log(error)
@@ -251,7 +251,7 @@ export default function Detail() {
         axios.delete(bareUrl + 'todo-items/' + todoId)
             .then(() => {
                 getAllTodos()
-                setMessage('Todo berhasil dihapus');
+                setMessage('Item berhasil dihapus');
                 removeTodoModal.hide()
                 successModal.show()
             });
@@ -282,9 +282,9 @@ export default function Detail() {
             setTextValue('')
             setDataArray({})
             getAllTodos()
-            setMessage('Todo berhasil diubah');
+            // setMessage('Todo berhasil diubah');
             addTodoModal.hide()
-            successModal.show()
+            // successModal.show()
             setIsEditItem(false)
         }).catch(error => {
             setIsSaving(false)
@@ -357,6 +357,7 @@ export default function Detail() {
 
     const $successModal = document.getElementById('successModal');
     const successModal = new Modal($successModal, {
+        closable: true,
         backdropClasses: 'modal-backdrop',
         onHide: () => {
             removeBackdrop()
