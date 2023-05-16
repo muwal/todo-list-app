@@ -64,6 +64,7 @@ export default function Detail() {
     const handleSortOrderChange = (value) => {
         setSortOrder(value);
         sortData(value);
+        setClassDropdownSort('hidden');
     };
 
     const handleItemChange = (item) => {
@@ -183,6 +184,7 @@ export default function Detail() {
         setTextValue('')
         setDataArray({})
         setIsEditItem(false)
+        setClassDropdownSort('hidden');
 
         addTodoModal.show()
     }
@@ -239,7 +241,7 @@ export default function Detail() {
 
         setTodoId(todo.id)
         setTodoTitle(todo.title)
-
+        setClassDropdownSort('hidden');
         removeTodoModal.show()
 
     }
@@ -388,7 +390,7 @@ export default function Detail() {
                                         <img src={iconSort} alt="icon sort" />
                                     </button>
                                     {/* <div id="sortDropdown" className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)}> */}
-                                    <ul className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] block` + (classDropdownSort)} aria-labelledby="sortDropdownToggle" data-cy="sort-parent" id="sortDropdown">
+                                    <ul className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)} aria-labelledby="sortDropdownToggle" data-cy="sort-parent" id="sortDropdown">
                                         <li data-cy="sort-selection" onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
                                             {/* <button onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
                                             <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
@@ -488,7 +490,7 @@ export default function Detail() {
                                 </div>
                             </button>
                             {/* <div id="priotyDropdown" className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)}> */}
-                            <ul className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute block` + (classDropdownPriority)} aria-labelledby="priotyDropdownToggle" id="priotyDropdown">
+                            <ul className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)} aria-labelledby="priotyDropdownToggle" id="priotyDropdown">
                                 {priorities.map((item, index) => (
                                     <li key={index} data-cy={isEditItem ? 'modal-edit-priority-item' : 'modal-add-priority-item'} onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center">
                                         {/* <button onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center"> */}
