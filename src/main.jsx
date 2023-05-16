@@ -15,7 +15,7 @@ import Detail from './pages/Detail.jsx'
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: "https://muwal.github.io/todo-list-app/",
         element: <Layout>
             <App />
         </Layout>,
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     },
 
     {
-        path: '/detail/:id',
+        path: 'https://muwal.github.io/todo-list-app/detail/:id',
         element: <Layout>
             <Detail />
         </Layout>,
