@@ -1,8 +1,8 @@
-import IconPlus from './assets/icon-plus.svg'
-import IconDelete from './assets/icon-delete.svg'
-import iconAlert from './assets/icon-alert.svg'
-import iconAlertSm from './assets/icon-alert-sm.svg'
-import emptyActivity from './assets/empty-activity.png'
+import IconPlus from '/public/assets/icon-plus.svg'
+import IconDelete from '/public/assets/icon-delete.svg'
+import iconAlert from '/public/assets/icon-alert.svg'
+import iconAlertSm from '/public/assets/icon-alert-sm.svg'
+import emptyActivity from '/public/assets/empty-activity.png'
 
 import { Modal } from 'flowbite';
 
