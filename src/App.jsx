@@ -101,7 +101,7 @@ function App() {
 				activities.map((activity, index) => {
 					return (
 						<div className="bg-white rounded-2xl shadow-md p-6 w-[235px] flex flex-col" data-cy="activity-item" key={'activity-item' + index} id={'itemTodo' + index}>
-							<Link to={`https://muwal.github.io/todo-list-app/detail/${activity.id}`} element={<Detail />} >
+							<Link to={`/detail/${activity.id}`} element={<Detail />} >
 								<div className="font-semibold text-lg h-[160px]" data-cy="activity-item-title">
 									{activity.title}
 								</div>

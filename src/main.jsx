@@ -15,9 +15,9 @@ import {
 } from "react-router-dom";
 import Detail from './pages/Detail.jsx'
 
-const router = createHashRouter([
+const router = createBrowserRouter([
     {
-        path: "https://muwal.github.io/todo-list-app/",
+        path: "/",
         element: <Layout>
             <App />
         </Layout>,
@@ -25,7 +25,7 @@ const router = createHashRouter([
     },
 
     {
-        path: 'https://muwal.github.io/todo-list-app/detail/:id',
+        path: '/detail/:id',
         element: <Layout>
             <Detail />
         </Layout>,

@@ -387,7 +387,7 @@ export default function Detail() {
             <section>
                 <div className="container mx-auto">
                     <div className="mt-12 flex items-center">
-                        <Link to='https://muwal.github.io/todo-list-app/'>
+                        <Link to='/'>
                             <div className="mr-2">
                                 <img src={iconBack} alt="icon back" data-cy="todo-back-button" />
                             </div>
