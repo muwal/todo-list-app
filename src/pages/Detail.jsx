@@ -157,7 +157,7 @@ export default function Detail() {
                     }
                     return (
                         <div className="bg-white rounded-2xl shadow-md p-8 flex items-center" key={index} data-cy="todo-item">
-                            <input type="checkbox" className="mr-6 h-5 w-5 checked:bg-cyan" data-cy="todo-item-checkbox" onChange={() => { toggleStatus(item) }} checked={!item.is_active} />
+                            <input type="checkbox" className="mr-6 h-5 w-5 checked:bg-cyan" id={'todoItem' + index} data-cy="todo-item-checkbox" onChange={() => { toggleStatus(item) }} checked={!item.is_active} />
                             <div className={`h-3 w-3 mr-4 rounded-full ` + warna} data-cy="todo-item-priority-indicator"></div>
                             <div className={item.is_active ? 'font-semibold text-lg' : 'font-semibold text-lg line-through text-slate-500'} data-cy="todo-item-title">
                                 {item.title}
@@ -210,6 +210,7 @@ export default function Detail() {
             setDataArray({})
             getAllTodos()
             setMessage('Todo berhasil ditambahkan');
+            setClassDropdownPriority('hidden');
             addTodoModal.hide()
             successModal.show()
         }).catch(error => {
@@ -279,6 +280,7 @@ export default function Detail() {
             setDataArray({})
             getAllTodos()
             setMessage('Todo berhasil diubah');
+            setClassDropdownPriority('hidden');
             addTodoModal.hide()
             successModal.show()
             setIsEditItem(false)
@@ -385,67 +387,57 @@ export default function Detail() {
                                     <button id="sortDropdownToggle" onClick={classDropdownSort == 'hidden' ? showDropdownSort : hideDropdownSort} className="h-12 w-12 rounded-full flex items-center justify-center border-slate-200 border-2" data-cy="todo-sort-button" type='button'>
                                         <img src={iconSort} alt="icon sort" />
                                     </button>
-                                    <div id="sortDropdown" className={`z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)}>
-                                        <ul className="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="sortDropdownToggle" data-cy="sort-parent">
-                                            <li data-cy="sort-selection">
-                                                <button onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center">
-                                                    <div className="mr-4">
-                                                        <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" />
-                                                    </div>
-                                                    <div data-cy="sort-selection-title">
-                                                        Terbaru
-                                                    </div>
+                                    {/* <div id="sortDropdown" className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)}> */}
+                                    <ul className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)} aria-labelledby="sortDropdownToggle" data-cy="sort-parent" id="sortDropdown">
+                                        <li data-cy="sort-selection" onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
+                                            {/* <button onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
+                                            <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
+                                            <div data-cy="sort-selection-title">
+                                                Terbaru
+                                            </div>
 
-                                                </button>
-                                            </li>
-                                            <li data-cy="sort-selection">
-                                                <button onClick={() => handleSortOrderChange('oldest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center">
-                                                    <div className="mr-4">
-                                                        <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" />
-                                                    </div>
-                                                    <div data-cy="sort-selection-title">
-                                                        Terlama
-                                                    </div>
+                                            {/* </button> */}
+                                        </li>
+                                        <li data-cy="sort-selection" onClick={() => handleSortOrderChange('oldest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
+                                            {/* <button onClick={() => handleSortOrderChange('oldest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
+                                            <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
+                                            <div data-cy="sort-selection-title">
+                                                Terlama
+                                            </div>
 
-                                                </button>
-                                            </li>
-                                            <li data-cy="sort-selection">
-                                                <button onClick={() => handleSortOrderChange('asc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center">
-                                                    <div className="mr-4">
-                                                        <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" />
-                                                    </div>
-                                                    <div data-cy="sort-selection-title">
-                                                        A-Z
-                                                    </div>
+                                            {/* </button> */}
+                                        </li>
+                                        <li data-cy="sort-selection" onClick={() => handleSortOrderChange('asc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
+                                            {/* <button onClick={() => handleSortOrderChange('asc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
+                                            <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
+                                            <div data-cy="sort-selection-title">
+                                                A-Z
+                                            </div>
 
-                                                </button>
-                                            </li>
-                                            <li data-cy="sort-selection">
-                                                <button onClick={() => handleSortOrderChange('desc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center">
-                                                    <div className="mr-4">
-                                                        <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" />
-                                                    </div>
-                                                    <div data-cy="sort-selection-title">
-                                                        Z-A
-                                                    </div>
+                                            {/* </button> */}
+                                        </li>
+                                        <li data-cy="sort-selection" onClick={() => handleSortOrderChange('desc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
+                                            {/* <button onClick={() => handleSortOrderChange('desc')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
+                                            <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
+                                            <div data-cy="sort-selection-title">
+                                                Z-A
+                                            </div>
 
-                                                </button>
-                                            </li>
-                                            <li data-cy="sort-selection">
-                                                <button onClick={() => handleSortOrderChange('unchecked')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center">
-                                                    <div className="mr-4">
-                                                        <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" />
-                                                    </div>
-                                                    <div data-cy="sort-selection-title">
-                                                        Belum Selesai
-                                                    </div>
+                                            {/* </button> */}
+                                        </li>
+                                        <li data-cy="sort-selection" onClick={() => handleSortOrderChange('unchecked')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
+                                            {/* <button onClick={() => handleSortOrderChange('unchecked')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
+                                            <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
+                                            <div data-cy="sort-selection-title">
+                                                Belum Selesai
+                                            </div>
 
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                            {/* </button> */}
+                                        </li>
+                                    </ul>
+                                    {/* </div> */}
                                 </div>
-                                <button className="inline-flex py-3 px-6 bg-cyan rounded-full text-white font-semibold" onClick={handleAddTodo} data-cy="todo-add-button">
+                                <button className="inline-flex py-3 px-6 bg-cyan rounded-full text-white font-semibold" id='todoAddBtn' onClick={handleAddTodo} data-cy="todo-add-button">
                                     <div>
                                         <img src={IconPlus} alt="icon plus" />
                                     </div>
@@ -495,23 +487,23 @@ export default function Detail() {
                                     <img src={iconAngle} alt="icon angle" />
                                 </div>
                             </button>
-                            <div id="priotyDropdown" className={`bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-10 absolute ` + (classDropdownPriority)}>
-                                <ul className="py-2 text-gray-700 dark:text-gray-200" aria-labelledby="priotyDropdownToggle">
-                                    {priorities.map((item, index) => (
-                                        <li key={index} data-cy={isEditItem ? 'modal-edit-priority-item' : 'modal-add-priority-item'}>
-                                            <button onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center">
-                                                <div className="mr-4">
-                                                    <div className={`h-3 w-3 rounded-full ` + item.color}></div>
-                                                </div>
-                                                <div>
-                                                    {item.priority}
-                                                </div>
+                            {/* <div id="priotyDropdown" className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)}> */}
+                            <ul className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)} aria-labelledby="priotyDropdownToggle" id="priotyDropdown">
+                                {priorities.map((item, index) => (
+                                    <li key={index} data-cy={isEditItem ? 'modal-edit-priority-item' : 'modal-add-priority-item'} onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center">
+                                        {/* <button onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center"> */}
+                                        <div className="mr-4">
+                                            <div className={`h-3 w-3 rounded-full ` + item.color}></div>
+                                        </div>
+                                        <div>
+                                            {item.priority}
+                                        </div>
 
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                                        {/* </button> */}
+                                    </li>
+                                ))}
+                            </ul>
+                            {/* </div> */}
                         </div>
                         <div className="p-6 flex border-t">
                             <div className="ml-auto">
