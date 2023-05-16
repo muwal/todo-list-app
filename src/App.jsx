@@ -100,7 +100,7 @@ function App() {
 			return (
 				activities.map((activity, index) => {
 					return (
-						<div className="bg-white rounded-2xl shadow-md p-6 w-[235px] flex flex-col" data-cy="activity-item" key={'activity-item' + index} id={'itemTodo' + index}>
+						<div className="bg-white rounded-2xl shadow-md p-6 w-[235px] flex flex-col" data-cy="activity-item" key={'activity-item' + index} id={'itemActivities' + index}>
 							<Link to={`/detail/${activity.id}`} element={<Detail />} >
 								<div className="font-semibold text-lg h-[160px]" data-cy="activity-item-title">
 									{activity.title}
@@ -175,8 +175,8 @@ function App() {
 				</div>
 			</section>
 
-			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" data-cy="modal-delete" className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
-				<div className="relative w-full max-w-2xl max-h-full">
+			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+				<div className="relative w-full max-w-2xl max-h-full" data-cy="modal-delete">
 					<div className="relative bg-white rounded-2xl shadow py-6">
 						<div className="p-6 text-center">
 							<img src={iconAlert} alt="icon alert" className="mx-auto" data-cy="modal-delete-icon" />
@@ -200,8 +200,8 @@ function App() {
 				</div>
 			</div>
 
-			<div id="removeActivitySuccessModal" tabIndex="-1" aria-hidden="true" data-cy="modal-information" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
-				<div className="relative w-full max-w-2xl max-h-full">
+			<div id="removeActivitySuccessModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+				<div className="relative w-full max-w-2xl max-h-full" data-cy="modal-information">
 					<div className="relative bg-white rounded-2xl shadow py-6">
 						<div className="flex items-center px-6">
 							<img src={iconAlertSm} alt="icon alert" data-cy="modal-information-icon" />

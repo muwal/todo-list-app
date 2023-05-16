@@ -266,6 +266,7 @@ export default function Detail() {
         })
             .then(response => {
                 getAllTodos()
+                console.log(response)
             })
     }
 
@@ -280,7 +281,6 @@ export default function Detail() {
             setDataArray({})
             getAllTodos()
             setMessage('Todo berhasil diubah');
-            setClassDropdownPriority('hidden');
             addTodoModal.hide()
             successModal.show()
             setIsEditItem(false)
@@ -388,7 +388,7 @@ export default function Detail() {
                                         <img src={iconSort} alt="icon sort" />
                                     </button>
                                     {/* <div id="sortDropdown" className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)}> */}
-                                    <ul className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] ` + (classDropdownSort)} aria-labelledby="sortDropdownToggle" data-cy="sort-parent" id="sortDropdown">
+                                    <ul className={`py-2 text-gray-700 dark:text-gray-200 z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-[200px] block` + (classDropdownSort)} aria-labelledby="sortDropdownToggle" data-cy="sort-parent" id="sortDropdown">
                                         <li data-cy="sort-selection" onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center cursor-pointer">
                                             {/* <button onClick={() => handleSortOrderChange('newest')} className="block w-full px-6 py-3 hover:bg-gray-100 flex items-center"> */}
                                             <img src={iconSort} alt="icon sort" data-cy="sort-selection-icon" className='mr-4' />
@@ -455,8 +455,8 @@ export default function Detail() {
                 </div>
             </section>
 
-            <div id="addTodoModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" style={{ zIndex: '999' }} data-cy={isEditItem ? 'modal-edit' : 'modal-add'}>
-                <div className="relative w-full max-w-2xl max-h-full">
+            <div id="addTodoModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full" style={{ zIndex: '999' }}>
+                <div className="relative w-full max-w-2xl max-h-full" data-cy={isEditItem ? 'modal-edit' : 'modal-add'}>
                     <div className="relative bg-white rounded-2xl shadow">
                         <div className="flex items-start justify-between p-6 border-b rounded-t">
                             <h3 className="text-xl font-semibold text-gray-900 dark:text-white" data-cy={isEditItem ? 'modal-edit-title' : 'modal-add-title'}>
@@ -488,7 +488,7 @@ export default function Detail() {
                                 </div>
                             </button>
                             {/* <div id="priotyDropdown" className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)}> */}
-                            <ul className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute ` + (classDropdownPriority)} aria-labelledby="priotyDropdownToggle" id="priotyDropdown">
+                            <ul className={`py-2 text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 z-[70] absolute block` + (classDropdownPriority)} aria-labelledby="priotyDropdownToggle" id="priotyDropdown">
                                 {priorities.map((item, index) => (
                                     <li key={index} data-cy={isEditItem ? 'modal-edit-priority-item' : 'modal-add-priority-item'} onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center">
                                         {/* <button onClick={() => handleItemChange(item)} className="block px-6 py-3 hover:bg-gray-100 w-full flex items-center"> */}
@@ -516,8 +516,8 @@ export default function Detail() {
                 </div>
             </div>
 
-            <div id="removeTodoModal" tabIndex="-1" aria-hidden="true" data-cy="modal-delete" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
-                <div className="relative w-full max-w-2xl max-h-full">
+            <div id="removeTodoModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+                <div className="relative w-full max-w-2xl max-h-full" data-cy="modal-delete">
                     <div className="relative bg-white rounded-2xl shadow py-6">
                         <div className="p-6 text-center">
                             <img src={iconAlert} alt="icon alert" className="mx-auto" data-cy="modal-delete-icon" />
@@ -541,8 +541,8 @@ export default function Detail() {
                 </div>
             </div>
 
-            <div id="successModal" tabIndex="-1" aria-hidden="true" data-cy="modal-information" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
-                <div className="relative w-full max-w-2xl max-h-full">
+            <div id="successModal" tabIndex="-1" aria-hidden="true" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+                <div className="relative w-full max-w-2xl max-h-full" data-cy="modal-information">
                     <div className="relative bg-white rounded-2xl shadow py-6">
                         <div className="flex items-center px-6">
                             <img src={iconAlertSm} alt="icon alert" data-cy="modal-information-icon" />
