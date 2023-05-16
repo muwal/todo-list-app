@@ -157,25 +157,17 @@ export default function Detail() {
                     }
                     return (
                         <div className="bg-white rounded-2xl shadow-md p-8 flex items-center" key={index} data-cy="todo-item">
-                            <div className="mr-6">
-                                <input type="checkbox" className="h-5 w-5 checked:bg-cyan" data-cy="todo-item-checkbox" onChange={() => { toggleStatus(item) }} checked={!item.is_active} />
-                            </div>
-                            <div className="mr-4">
-                                <div className={`h-3 w-3 rounded-full ` + warna} data-cy="todo-item-priority-indicator"></div>
-                            </div>
+                            <input type="checkbox" className="mr-6 h-5 w-5 checked:bg-cyan" data-cy="todo-item-checkbox" onChange={() => { toggleStatus(item) }} checked={!item.is_active} />
+                            <div className={`h-3 w-3 mr-4 rounded-full ` + warna} data-cy="todo-item-priority-indicator"></div>
                             <div className={item.is_active ? 'font-semibold text-lg' : 'font-semibold text-lg line-through text-slate-500'} data-cy="todo-item-title">
                                 {item.title}
                             </div>
-                            <div className="ml-3">
-                                <button data-cy="todo-item-edit-button" onClick={() => { editTodo(item) }}>
-                                    <img src={iconEdit} alt="icon edit" />
-                                </button>
-                            </div>
-                            <div className="ml-auto">
-                                <button onClick={() => showDeleteTodoModal(item)} data-cy="todo-item-delete-button">
-                                    <img src={IconDelete} alt="icon delete" />
-                                </button>
-                            </div>
+                            <button data-cy="todo-item-edit-button" onClick={() => { editTodo(item) }} className='ml-3'>
+                                <img src={iconEdit} alt="icon edit" />
+                            </button>
+                            <button onClick={() => showDeleteTodoModal(item)} data-cy="todo-item-delete-button" className='ml-auto'>
+                                <img src={IconDelete} alt="icon delete" />
+                            </button>
                         </div>
                     );
                 })
@@ -318,27 +310,21 @@ export default function Detail() {
         if (isEdit) {
             return (
                 <>
-                    <div>
-                        <input type="text" autoFocus className="border-0 border-b-2 border-slate-300 focus:border-slate-500 focus:border-0 focus:border-b-2 focus:ring-0 text-3xl px-0 py-2 bg-transparent font-bold" defaultValue={activityTitle} onBlur={() => { updateActivity() }} data-cy="todo-title" onChange={handleTitleChange} />
-                    </div>
-                    <div className="ml-6">
-                        <button data-cy="todo-title-edit-button" onClick={() => { updateActivity() }}>
-                            <img src={iconEdit} alt="icon edit" />
-                        </button>
-                    </div>
+                    <input type="text" autoFocus className="border-0 border-b-2 border-slate-300 focus:border-slate-500 focus:border-0 focus:border-b-2 focus:ring-0 text-3xl px-0 py-2 bg-transparent font-bold" defaultValue={activityTitle} onBlur={() => { updateActivity() }} data-cy="todo-title" onChange={handleTitleChange} />
+                    <button data-cy="todo-title-edit-button" className='ml-6' onClick={() => { updateActivity() }}>
+                        <img src={iconEdit} alt="icon edit" />
+                    </button>
                 </>
             )
         } else {
             return (
                 <>
-                    <div className="text-3xl font-bold py-2 border-b-2 border-transparent" data-cy="todo-title">
+                    <div className="text-3xl font-bold py-2 border-b-2 border-transparent" data-cy="todo-title" onClick={() => { setIsEdit(true) }} >
                         {activityTitle}
                     </div>
-                    <div className="ml-6">
-                        <button data-cy="todo-title-edit-button" onClick={() => { setIsEdit(true) }}>
-                            <img src={iconEdit} alt="icon edit" />
-                        </button>
-                    </div>
+                    <button data-cy="todo-title-edit-button" className='ml-6' onClick={() => { setIsEdit(true) }}>
+                        <img src={iconEdit} alt="icon edit" />
+                    </button>
                 </>
             )
         }

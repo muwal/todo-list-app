@@ -110,8 +110,8 @@ function App() {
 								<div className="text-slate-500" data-cy="activity-item-date">
 									{displayDate(activity.created_at)}
 								</div>
-								<div className="ml-auto">
-									<button onClick={() => showDeleteActivityModal(activity)} data-cy='activity-item-delete-button'>
+								<div className="ml-auto" data-cy='activity-item-delete-button'>
+									<button onClick={() => showDeleteActivityModal(activity)}>
 										<img src={IconDelete} alt="delete" />
 									</button>
 								</div>
@@ -175,7 +175,7 @@ function App() {
 				</div>
 			</section>
 
-			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" data-cy="modal-delete" className="fixed top-0 left-0 right-0 z-50 hidden w-[500px] p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
+			<div id="removeActivityModal" tabIndex="-1" aria-hidden="true" data-cy="modal-delete" className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full mx-auto">
 				<div className="relative w-full max-w-2xl max-h-full">
 					<div className="relative bg-white rounded-2xl shadow py-6">
 						<div className="p-6 text-center">
