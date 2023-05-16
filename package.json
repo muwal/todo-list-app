@@ -3,7 +3,7 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://muwal.github.io/todo-list-app/",
+  "homepage": "https://legendary-crumble-ec9eb0.netlify.app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=./",
