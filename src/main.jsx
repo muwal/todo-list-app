@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 import Detail from './pages/Detail.jsx'
 
-const router = createBrowserRouter([
+const router = HashRouter([
     {
         path: "https://muwal.github.io/todo-list-app/",
         element: <Layout>
