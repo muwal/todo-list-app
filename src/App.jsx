@@ -138,7 +138,7 @@ class App extends Component {
 								Activity
 							</div>
 							<div className="ml-auto">
-								<input type="text" autoFocus className="border-0 border-b-1 border-slate-300 focus:border-slate-500 focus:border-0 focus:border-b-2 focus:ring-0 text-xl px-0 py-2 mr-5 bg-transparent" onChange={(e) => {
+								<input type="text" autoFocus className="border-0 border-b-2 border-slate-300 focus:border-slate-500 focus:border-0 focus:border-b-2 focus:ring-0 text-xl px-0 py-2 mr-5 bg-transparent" onChange={(e) => {
 									this.setState({
 										activitySearchText: e.target.value
 									})
